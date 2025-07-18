@@ -49,7 +49,7 @@ void app_main(void) {
     esp_log_level_set("*", ESP_LOG_INFO);  // Ensure all INFO logs are visible
 
     // Configure TWAI (CAN) peripheral
-    twai_general_config_t g_config = TWAI_GENERAL_CONFIG_DEFAULT(GPIO_NUM_21, GPIO_NUM_22, TWAI_MODE_NORMAL);
+    twai_general_config_t g_config = TWAI_GENERAL_CONFIG_DEFAULT(GPIO_NUM_32, GPIO_NUM_33, TWAI_MODE_NO_ACK);
     twai_timing_config_t t_config = TWAI_TIMING_CONFIG_1MBITS();
     twai_filter_config_t f_config = TWAI_FILTER_CONFIG_ACCEPT_ALL();
 
