@@ -26,6 +26,23 @@ void send_task(void *arg) {
     }
 }
 
+// ---------------- RECEIVE TASK ----------------
+void receive_task(void *arg) {
+    while (1) {
+        twai_message_t message;
+        esp_err_t err = twai_receive(&message, pdMS_TO_TICKS(1000));
+        if (err == ESP_OK) {
+            ESP_LOGI(TAG, "Message received: ID=0x%" PRIx32 ", Data=[%02X %02X %02X %02X %02X %02X %02X %02X]",
+                     message.identifier,
+                     message.data[0], message.data[1], message.data[2], message.data[3],
+                     message.data[4], message.data[5], message.data[6], message.data[7]);
+        } else if (err == ESP_ERR_TIMEOUT) {
+            ESP_LOGW(TAG, "Reception timed out");
+        } else {
+            ESP_LOGE(TAG, "Message reception failed: %s", esp_err_to_name(err));
+        }
+    }
+}
 
 // ---------------- MAIN ----------------
 void app_main(void) {

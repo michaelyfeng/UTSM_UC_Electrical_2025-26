@@ -1,0 +1,289 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6276
+load:0x40078000,len:15748
+load:0x40080400,len:4
+ho 8 tail 4 room 4
+load:0x40080404,len:3860
+entry 0x4008063c
+[0;32mI (31) boot: ESP-IDF v5.4.1-dirty 2nd stage bootloader[0m
+[0;32mI (31) boot: compile time Jul 17 2025 19:31:09[0m
+[0;32mI (31) boot: Multicore bootloader[0m
+[0;32mI (33) boot: chip revision: v3.1[0m
+[0;32mI (36) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (40) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (43) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (47) boot: Enabling RNG early entropy source...[0m
+[0;32mI (51) boot: Partition Table:[0m
+[0;32mI (54) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (60) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (67) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (73) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (80) boot: End of partition table[0m
+[0;32mI (83) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=09e04h ( 40452) map[0m
+[0;32mI (104) esp_image: segment 1: paddr=00019e2c vaddr=3ff80000 size=0001ch (    28) load[0m
+[0;32mI (105) esp_image: segment 2: paddr=00019e50 vaddr=3ffb0000 size=022f4h (  8948) load[0m
+[0;32mI (111) esp_image: segment 3: paddr=0001c14c vaddr=40080000 size=03ecch ( 16076) load[0m
+[0;32mI (122) esp_image: segment 4: paddr=00020020 vaddr=400d0020 size=14f20h ( 85792) map[0m
+[0;32mI (153) esp_image: segment 5: paddr=00034f48 vaddr=40083ecc size=090e8h ( 37096) load[0m
+[0;32mI (173) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (174) boot: Disabling RNG early entropy source...[0m
+[0;32mI (184) cpu_start: Multicore app[0m
+[0;32mI (192) cpu_start: Pro cpu start user code[0m
+[0;32mI (192) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (192) app_init: Application information:[0m
+[0;32mI (192) app_init: Project name:     UTSM_ESPIDF[0m
+[0;32mI (197) app_init: App version:      6b332d4-dirty[0m
+[0;32mI (201) app_init: Compile time:     Jul 17 2025 19:30:51[0m
+[0;32mI (206) app_init: ELF file SHA256:  bdc52cc6e...[0m
+[0;32mI (210) app_init: ESP-IDF:          v5.4.1-dirty[0m
+[0;32mI (215) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (219) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (223) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (227) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (233) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (238) heap_init: At 3FFB2BB8 len 0002D448 (181 KiB): DRAM[0m
+[0;32mI (243) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (248) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (254) heap_init: At 4008CFB4 len 0001304C (76 KiB): IRAM[0m
+[0;32mI (261) spi_flash: detected chip: generic[0m
+[0;32mI (263) spi_flash: flash io: dio[0m
+[0;32mI (267) main_task: Started on CPU0[0m
+[0;32mI (277) main_task: Calling app_main()[0m
+[0;32mI (277) TWAI: TWAI driver installed successfully[0m
+[0;32mI (277) TWAI: TWAI driver started successfully[0m
+[0;32mI (277) TWAI: Message sent successfully[0m
+[0;32mI (277) main_task: Returned from app_main()[0m
+[0;32mI (1277) TWAI: Message sent successfully[0m
+[0;33mW (1277) TWAI: Reception timed out[0m
+[0;32mI (2277) TWAI: Message sent successfully[0m
+[0;33mW (2277) TWAI: Reception timed out[0m
+[0;32mI (3277) TWAI: Message sent successfully[0m
+[0;33mW (3277) TWAI: Reception timed out[0m
+[0;32mI (4277) TWAI: Message sent successfully[0m
+[0;33mW (4277) TWAI: Reception timed out[0m
+[0;32mI (5277) TWAI: Message sent successfully[0m
+[0;33mW (5277) TWAI: Reception timed out[0m
+[0;33mW (6277) TWAI: Reception timed out[0m
+[1;31mE (7277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (7277) TWAI: Reception timed out[0m
+[0;33mW (8277) TWAI: Reception timed out[0m
+[1;31mE (9277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (9277) TWAI: Reception timed out[0m
+[0;33mW (10277) TWAI: Reception timed out[0m
+[1;31mE (11277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (11277) TWAI: Reception timed out[0m
+[0;33mW (12277) TWAI: Reception timed out[0m
+[1;31mE (13277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (13277) TWAI: Reception timed out[0m
+[0;33mW (14277) TWAI: Reception timed out[0m
+[1;31mE (15277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (15277) TWAI: Reception timed out[0m
+[0;33mW (16277) TWAI: Reception timed out[0m
+[1;31mE (17277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (17277) TWAI: Reception timed out[0m
+[0;33mW (18277) TWAI: Reception timed out[0m
+[1;31mE (19277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (19277) TWAI: Reception timed out[0m
+[0;33mW (20277) TWAI: Reception timed out[0m
+[1;31mE (21277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (21277) TWAI: Reception timed out[0m
+[0;33mW (22277) TWAI: Reception timed out[0m
+[1;31mE (23277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (23277) TWAI: Reception timed out[0m
+[0;33mW (24277) TWAI: Reception timed out[0m
+[1;31mE (25277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (25277) TWAI: Reception timed out[0m
+[0;33mW (26277) TWAI: Reception timed out[0m
+[1;31mE (27277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (27277) TWAI: Reception timed out[0m
+[0;33mW (28277) TWAI: Reception timed out[0m
+[1;31mE (29277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (29277) TWAI: Reception timed out[0m
+[0;33mW (30277) TWAI: Reception timed out[0m
+[1;31mE (31277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (31277) TWAI: Reception timed out[0m
+[0;33mW (32277) TWAI: Reception timed out[0m
+[1;31mE (33277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (33277) TWAI: Reception timed out[0m
+[0;33mW (34277) TWAI: Reception timed out[0m
+[1;31mE (35277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (35277) TWAI: Reception timed out[0m
+[0;33mW (36277) TWAI: Reception timed out[0m
+[1;31mE (37277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (37277) TWAI: Reception timed out[0m
+[0;33mW (38277) TWAI: Reception timed out[0m
+[1;31mE (39277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (39277) TWAI: Reception timed out[0m
+[0;33mW (40277) TWAI: Reception timed out[0m
+[1;31mE (41277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (41277) TWAI: Reception timed out[0m
+[0;33mW (42277) TWAI: Reception timed out[0m
+[1;31mE (43277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (43277) TWAI: Reception timed out[0m
+[0;33mW (44277) TWAI: Reception timed out[0m
+[1;31mE (45277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (45277) TWAI: Reception timed out[0m
+[0;33mW (46277) TWAI: Reception timed out[0m
+[1;31mE (47277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (47277) TWAI: Reception timed out[0m
+[0;33mW (48277) TWAI: Reception timed out[0m
+[1;31mE (49277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (49277) TWAI: Reception timed out[0m
+[0;33mW (50277) TWAI: Reception timed out[0m
+[1;31mE (51277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (51277) TWAI: Reception timed out[0m
+[0;33mW (52277) TWAI: Reception timed out[0m
+[1;31mE (53277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (53277) TWAI: Reception timed out[0m
+[0;33mW (54277) TWAI: Reception timed out[0m
+[1;31mE (55277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (55277) TWAI: Reception timed out[0m
+[0;33mW (56277) TWAI: Reception timed out[0m
+[1;31mE (57277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (57277) TWAI: Reception timed out[0m
+[0;33mW (58277) TWAI: Reception timed out[0m
+[1;31mE (59277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (59277) TWAI: Reception timed out[0m
+[0;33mW (60277) TWAI: Reception timed out[0m
+[1;31mE (61277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (61277) TWAI: Reception timed out[0m
+[0;33mW (62277) TWAI: Reception timed out[0m
+[1;31mE (63277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (63277) TWAI: Reception timed out[0m
+[0;33mW (64277) TWAI: Reception timed out[0m
+[1;31mE (65277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (65277) TWAI: Reception timed out[0m
+[0;33mW (66277) TWAI: Reception timed out[0m
+[1;31mE (67277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (67277) TWAI: Reception timed out[0m
+[0;33mW (68277) TWAI: Reception timed out[0m
+[1;31mE (69277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (69277) TWAI: Reception timed out[0m
+[0;33mW (70277) TWAI: Reception timed out[0m
+[1;31mE (71277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (71277) TWAI: Reception timed out[0m
+[0;33mW (72277) TWAI: Reception timed out[0m
+[1;31mE (73277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (73277) TWAI: Reception timed out[0m
+[0;33mW (74277) TWAI: Reception timed out[0m
+[1;31mE (75277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (75277) TWAI: Reception timed out[0m
+[0;33mW (76277) TWAI: Reception timed out[0m
+[1;31mE (77277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (77277) TWAI: Reception timed out[0m
+[0;33mW (78277) TWAI: Reception timed out[0m
+[1;31mE (79277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (79277) TWAI: Reception timed out[0m
+[0;33mW (80277) TWAI: Reception timed out[0m
+[1;31mE (81277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (81277) TWAI: Reception timed out[0m
+[0;33mW (82277) TWAI: Reception timed out[0m
+[1;31mE (83277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (83277) TWAI: Reception timed out[0m
+[0;33mW (84277) TWAI: Reception timed out[0m
+[1;31mE (85277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (85277) TWAI: Reception timed out[0m
+[0;33mW (86277) TWAI: Reception timed out[0m
+[1;31mE (87277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (87277) TWAI: Reception timed out[0m
+[0;33mW (88277) TWAI: Reception timed out[0m
+[1;31mE (89277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (89277) TWAI: Reception timed out[0m
+[0;33mW (90277) TWAI: Reception timed out[0m
+[1;31mE (91277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (91277) TWAI: Reception timed out[0m
+[0;33mW (92277) TWAI: Reception timed out[0m
+[1;31mE (93277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (93277) TWAI: Reception timed out[0m
+[0;33mW (94277) TWAI: Reception timed out[0m
+[1;31mE (95277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (95277) TWAI: Reception timed out[0m
+[0;33mW (96277) TWAI: Reception timed out[0m
+[1;31mE (97277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (97277) TWAI: Reception timed out[0m
+[0;33mW (98277) TWAI: Reception timed out[0m
+[1;31mE (99277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (99277) TWAI: Reception timed out[0m
+[0;33mW (100277) TWAI: Reception timed out[0m
+[1;31mE (101277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (101277) TWAI: Reception timed out[0m
+[0;33mW (102277) TWAI: Reception timed out[0m
+[1;31mE (103277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (103277) TWAI: Reception timed out[0m
+[0;33mW (104277) TWAI: Reception timed out[0m
+[1;31mE (105277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (105277) TWAI: Reception timed out[0m
+[0;33mW (106277) TWAI: Reception timed out[0m
+[1;31mE (107277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (107277) TWAI: Reception timed out[0m
+[0;33mW (108277) TWAI: Reception timed out[0m
+[1;31mE (109277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (109277) TWAI: Reception timed out[0m
+[0;33mW (110277) TWAI: Reception timed out[0m
+[1;31mE (111277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (111277) TWAI: Reception timed out[0m
+[0;33mW (112277) TWAI: Reception timed out[0m
+[1;31mE (113277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (113277) TWAI: Reception timed out[0m
+[0;33mW (114277) TWAI: Reception timed out[0m
+[1;31mE (115277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (115277) TWAI: Reception timed out[0m
+[0;33mW (116277) TWAI: Reception timed out[0m
+[1;31mE (117277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (117277) TWAI: Reception timed out[0m
+[0;33mW (118277) TWAI: Reception timed out[0m
+[1;31mE (119277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (119277) TWAI: Reception timed out[0m
+[0;33mW (120277) TWAI: Reception timed out[0m
+[1;31mE (121277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (121277) TWAI: Reception timed out[0m
+[0;33mW (122277) TWAI: Reception timed out[0m
+[1;31mE (123277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (123277) TWAI: Reception timed out[0m
+[0;33mW (124277) TWAI: Reception timed out[0m
+[1;31mE (125277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (125277) TWAI: Reception timed out[0m
+[0;33mW (126277) TWAI: Reception timed out[0m
+[1;31mE (127277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (127277) TWAI: Reception timed out[0m
+[0;33mW (128277) TWAI: Reception timed out[0m
+[1;31mE (129277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (129277) TWAI: Reception timed out[0m
+[0;33mW (130277) TWAI: Reception timed out[0m
+[1;31mE (131277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (131277) TWAI: Reception timed out[0m
+[0;33mW (132277) TWAI: Reception timed out[0m
+[1;31mE (133277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (133277) TWAI: Reception timed out[0m
+[0;33mW (134277) TWAI: Reception timed out[0m
+[1;31mE (135277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (135277) TWAI: Reception timed out[0m
+[0;33mW (136277) TWAI: Reception timed out[0m
+[1;31mE (137277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (137277) TWAI: Reception timed out[0m
+[0;33mW (138277) TWAI: Reception timed out[0m
+[1;31mE (139277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (139277) TWAI: Reception timed out[0m
+[0;33mW (140277) TWAI: Reception timed out[0m
+[1;31mE (141277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (141277) TWAI: Reception timed out[0m
+[0;33mW (142277) TWAI: Reception timed out[0m
+[1;31mE (143277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (143277) TWAI: Reception timed out[0m
+[0;33mW (144277) TWAI: Reception timed out[0m
+[1;31mE (145277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (145277) TWAI: Reception timed out[0m
+[0;33mW (146277) TWAI: Reception timed out[0m
+[1;31mE (147277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (147277) TWAI: Reception timed out[0m
+[0;33mW (148277) TWAI: Reception timed out[0m
+[1;31mE (149277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (149277) TWAI: Reception timed out[0m
+[0;33mW (150277) TWAI: Reception timed out[0m
+[1;31mE (151277) TWAI: Message transmission failed: ESP_ERR_TIMEOUT[0m
+[0;33mW (151277) TWAI: Reception
