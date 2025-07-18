@@ -1,0 +1,7 @@
+[1/4] C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\hisha\OneDrive\Documents\UTSM Tasks\UTSM_UC_Electrical_2025-26\build\esp-idf\esptool_py" && C:\Users\hisha\.espressif\python_env\idf5.4_py3.11_env\Scripts\python.exe C:/Users/hisha/esp/v5.4.1/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app "C:/Users/hisha/OneDrive/Documents/UTSM Tasks/UTSM_UC_Electrical_2025-26/build/partition_table/partition-table.bin" "C:/Users/hisha/OneDrive/Documents/UTSM Tasks/UTSM_UC_Electrical_2025-26/build/UTSM_ESPIDF.bin""
+UTSM_ESPIDF.bin binary size 0x2e060 bytes. Smallest app partition is 0x100000 bytes. 0xd1fa0 bytes (82%) free.
+[2/4] Performing build step for 'bootloader'
+[1/1] C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\hisha\OneDrive\Documents\UTSM Tasks\UTSM_UC_Electrical_2025-26\build\bootloader\esp-idf\esptool_py" && C:\Users\hisha\.espressif\python_env\idf5.4_py3.11_env\Scripts\python.exe C:/Users/hisha/esp/v5.4.1/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 "C:/Users/hisha/OneDrive/Documents/UTSM Tasks/UTSM_UC_Electrical_2025-26/build/bootloader/bootloader.bin""
+Bootloader binary size 0x6580 bytes. 0xa80 bytes (9%) free.
+[3/4] No install step for 'bootloader'
+[4/4] Completed 'bootloader'
