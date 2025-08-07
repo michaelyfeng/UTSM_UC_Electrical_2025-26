@@ -1,7 +1,7 @@
 #include <CAN.h>
 
-#define TX_GPIO_NUM   5
-#define RX_GPIO_NUM   4
+#define TX_GPIO_NUM   32
+#define RX_GPIO_NUM   33
 
 void setup() {
   Serial.begin (115200);

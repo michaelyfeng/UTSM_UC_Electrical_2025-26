@@ -1,7 +1,8 @@
 #include <CAN.h>
 
-#define TX_GPIO_NUM   33
-#define RX_GPIO_NUM   32
+#define TX_GPIO_NUM   32
+#define RX_GPIO_NUM   33
+bool state = false;
 
 void setup() {
   Serial.begin (115200);
@@ -18,6 +19,9 @@ void setup() {
     Serial.println("Starting CAN failed!");
     while (1);
   }
+  pinMode(25, OUTPUT);
+  digitalWrite(25, LOW);
+
 }
 
 void loop() {
@@ -25,6 +29,10 @@ void loop() {
   int packetSize = CAN.parsePacket();
 
   if (packetSize) {
+    if(state) 
+      digitalWrite(25, LOW); 
+    else digitalWrite(25, HIGH);
+    state = !state;
     // received a packet
     Serial.print ("Received ");
 
@@ -49,8 +57,10 @@ void loop() {
 
       // only print packet data for non-RTR packets
       while (CAN.available()) {
-        Serial.print ((char) CAN.read());
+        char read = (char) CAN.read();
+        Serial.print (read);
       }
+      //digitalWrite(25, HIGH);
       Serial.println();
     }
 
