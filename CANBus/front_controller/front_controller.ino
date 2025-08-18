@@ -1,5 +1,6 @@
 #include <CAN.h>
 #include <Bounce2.h>
+#include <ESP32Servo.h>
 
 #define TX_GPIO_NUM   32
 #define RX_GPIO_NUM   33
@@ -9,7 +10,7 @@
 #define BLINK_L       14
 #define HEADLIGHT_R   25
 #define HEADLIGHT_L   15
-#define WIPER         13 //16 for servo
+#define WIPER         26 //16 for servo
 #define HORN          27
 #define BRAKE_SW      12
 
@@ -33,11 +34,15 @@
 #define PRESCALER 8
 
 Bounce brake_switch_pin = Bounce();
+Servo wiper_servo;
 
 uint8_t last_device_states = 0x00;
 uint8_t current_device_states = 0x00;
 bool BR_flag = false;
 bool BL_flag = false;
+bool wiper_on_flag = false;
+bool wipe_to_pos = true;
+int wiper_pos_degrees = 1;
 bool blink_toggle_state = true;
 hw_timer_t *blinkTimer = NULL;
 
@@ -87,7 +92,7 @@ void setup() {
   pinMode(BLINK_L, OUTPUT);
   pinMode(HEADLIGHT_R, OUTPUT);
   pinMode(HEADLIGHT_L, OUTPUT);
-  pinMode(WIPER, OUTPUT);
+  wiper_servo.attach(WIPER);
   pinMode(HORN, OUTPUT);
 
   //define INPUT devices
@@ -121,6 +126,24 @@ void loop() {
     CAN.endPacket();
 
     Serial.println("done");
+  }
+
+  //operate servo if wiper ON
+  if(wiper_on_flag){
+
+    wiper_servo.write(wiper_pos_degrees);
+    Serial.println(wiper_pos_degrees);
+    delay(5); // potentially replace with timer interrupt
+
+    if(wiper_pos_degrees == 0 || wiper_pos_degrees == 180){
+      wipe_to_pos = !wipe_to_pos;
+    }
+
+    if(wipe_to_pos){
+      wiper_pos_degrees ++;
+    } else {
+      wiper_pos_degrees --;
+    }
   }
 
   // try to parse CAN packet
@@ -196,7 +219,7 @@ void loop() {
 
     if(0x1 & (current_device_states >> WIPER_BIT_POS)){
       //servo stuff
-      digitalWrite(WIPER, HIGH);
-    } else digitalWrite(WIPER, LOW);
+      wiper_on_flag = true;
+    } else wiper_on_flag = false;
   }
 }
