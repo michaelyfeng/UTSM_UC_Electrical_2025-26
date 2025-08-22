@@ -40,9 +40,9 @@ uint8_t last_device_states = 0x00;
 uint8_t current_device_states = 0x00;
 bool BR_flag = false;
 bool BL_flag = false;
-bool wiper_on_flag = false;
+int wiper_state_flag = 0; //0=OFF 1=ON  -1=IDLE
 bool wipe_to_pos = true;
-int wiper_pos_degrees = 1;
+int wiper_pos_degrees = 0;
 bool blink_toggle_state = true;
 hw_timer_t *blinkTimer = NULL;
 
@@ -128,9 +128,9 @@ void loop() {
     Serial.println("done");
   }
 
-  //operate servo if wiper ON
-  if(wiper_on_flag){
-
+  //operate servo
+  if(wiper_state_flag == 1){
+    //WIPER is ON
     wiper_servo.write(wiper_pos_degrees);
     Serial.println(wiper_pos_degrees);
     delay(5); // potentially replace with timer interrupt
@@ -143,6 +143,16 @@ void loop() {
       wiper_pos_degrees ++;
     } else {
       wiper_pos_degrees --;
+    }
+  } else if(wiper_state_flag == -1){
+    //IDLE, go back to 0deg position
+    if(wiper_pos_degrees == 0){
+      wipe_to_pos = true;
+      wiper_state_flag = 0; //go to off
+    } else {
+      wiper_pos_degrees--;
+      wiper_servo.write(wiper_pos_degrees);
+      delay(5);
     }
   }
 
@@ -219,7 +229,8 @@ void loop() {
 
     if(0x1 & (current_device_states >> WIPER_BIT_POS)){
       //servo stuff
-      wiper_on_flag = true;
-    } else wiper_on_flag = false;
+      wiper_state_flag = 1; //WIPER ON
+      wiper_pos_degrees ++; //increase pos from 0 to 1
+    } else if (wiper_state_flag != 0) wiper_state_flag = -1; //IDLE
   }
 }
