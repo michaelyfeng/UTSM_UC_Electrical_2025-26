@@ -1,0 +1,1 @@
+Command: cmake -G Ninja -DPYTHON_DEPS_CHECKED=1 -DPYTHON=C:\Users\Soldier1\.espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe -DESP_PLATFORM=1 -DSDKCONFIG='c:\Users\Soldier1\Desktop\UTSM_UC_Electrical_2025-26\CAN_send_only\CAN_TWAI_Testing\sdkconfig' -DCCACHE_ENABLE=1 C:\Users\Soldier1\Desktop\UTSM_UC_Electrical_2025-26\CAN_send_only\CAN_TWAI_Testing
