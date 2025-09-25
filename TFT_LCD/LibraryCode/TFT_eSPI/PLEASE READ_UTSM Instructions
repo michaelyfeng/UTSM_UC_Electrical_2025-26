@@ -1,0 +1,7 @@
+Copy and paste the library folder 'TFT_LCD' contained here to within your 'libraries' folder under your 'Arduino' folder, wherever that may be located on your computer. 
+
+Note: the 'Arduino' folder is often located under User/Documents on your computer.
+
+Then, open the sketch 'TFT_LCDScreen.ino' in your Arduino IDE and flash the code to the ESP32.
+
+The testing text 'For the win' will appear on screen. 
