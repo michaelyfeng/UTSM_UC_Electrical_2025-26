@@ -1,4 +1,5 @@
 #include <CAN.h>
+#include <Adafruit_NeoPixel.h>
 
 #define TX_GPIO_NUM   32
 #define RX_GPIO_NUM   33
@@ -6,7 +7,9 @@
 
 #define BLINK_R       21
 #define BLINK_L       14
-#define BRAKE         25
+#define BRAKE         26
+
+#define NUM_BRAKE_LEDS 6
 
 #define BR_CAN_MASK           0x01
 #define BL_CAN_MASK           0x02
@@ -26,6 +29,7 @@ bool BR_flag = false;
 bool BL_flag = false;
 bool blink_toggle_state = true;
 hw_timer_t *blinkTimer = NULL;
+Adafruit_NeoPixel brake_leds(NUM_BRAKE_LEDS, BRAKE, NEO_GRB + NEO_KHZ800);
 
 void ARDUINO_ISR_ATTR toggleBlink(){
   //toggle blink if light ON
@@ -71,6 +75,15 @@ void setup() {
   pinMode(BLINK_R, OUTPUT);
   pinMode(BLINK_L, OUTPUT);
   pinMode(BRAKE, OUTPUT);
+
+  brake_leds.begin();
+  brake_leds.show();
+  for(int i = 0; i < NUM_BRAKE_LEDS; i++){
+    brake_leds.setPixelColor(i, brake_leds.Color(255, 0, 0));
+    //brake_leds.show();
+  }
+  brake_leds.setBrightness(30);
+  brake_leds.show();
 }
 
 void loop() {
@@ -134,7 +147,13 @@ void loop() {
     if(!BR_flag && !BL_flag) timerStop(blinkTimer);
 
     if(0x1 & (current_device_states >> BRAKE_BIT_POS)){
-      digitalWrite(BRAKE, HIGH);
-    } else digitalWrite(BRAKE, LOW);
+      //digitalWrite(BRAKE, HIGH);
+      brake_leds.setBrightness(255);
+      brake_leds.show();
+    } else {
+      //digitalWrite(BRAKE, LOW);
+      brake_leds.setBrightness(30);
+      brake_leds.show();
+    }
   }
 }
