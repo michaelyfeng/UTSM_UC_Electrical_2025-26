@@ -21,7 +21,7 @@
 #define BLINK_L_PIN       27
 #define HEADLIGHTS_PIN    25
 #define WIPER_PIN         22
-#define HORN_PIN          21
+#define HORN_PIN          13
 
 const uint8_t button_pins[NUM_BUTTONS] = {HAZARDS_PIN, BLINK_R_PIN, BLINK_L_PIN, HEADLIGHTS_PIN, WIPER_PIN, HORN_PIN};
 const uint32_t CAN_masks[NUM_BUTTONS] = {HAZARDS_CAN_MASK, BR_CAN_MASK, BL_CAN_MASK, HEADLIGHTS_CAN_MASK, WIPER_CAN_MASK, HORN_CAN_MASK};
