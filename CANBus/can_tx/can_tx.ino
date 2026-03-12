@@ -2,6 +2,7 @@
 
 #define TX_GPIO_NUM   32
 #define RX_GPIO_NUM   33
+#define CAN_ID 0x99
 
 void setup() {
   Serial.begin (115200);
@@ -24,7 +25,7 @@ void loop() {
   // send packet: id is 11 bits, packet can contain up to 8 bytes of data
   Serial.print("Sending packet ... ");
 
-  CAN.beginPacket(0x12);
+  CAN.beginPacket(CAN_ID);
   CAN.write('h');
   CAN.write('e');
   CAN.write('l');
@@ -37,17 +38,17 @@ void loop() {
   delay(1000);
 
   // send extended packet: id is 29 bits, packet can contain up to 8 bytes of data
-  Serial.print("Sending extended packet ... ");
+  //Serial.print("Sending extended packet ... ");
 
-  CAN.beginExtendedPacket(0xabcdef);
-  CAN.write('w');
-  CAN.write('o');
-  CAN.write('r');
-  CAN.write('l');
-  CAN.write('d');
-  CAN.endPacket();
+  // CAN.beginExtendedPacket(0xabcdef);
+  // CAN.write('w');
+  // CAN.write('o');
+  // CAN.write('r');
+  // CAN.write('l');
+  // CAN.write('d');
+  // CAN.endPacket();
 
-  Serial.println("done");
+  // Serial.println("done");
 
-  delay(1000);
+  // delay(1000);
 }

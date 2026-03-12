@@ -4,6 +4,7 @@
 #define TX_GPIO_NUM   32
 #define RX_GPIO_NUM   33
 #define CAN_ID        0x08
+#define PT_CAN_ID     0x99
 
 #define BLINK_R       21
 #define BLINK_L       14
@@ -25,6 +26,7 @@
 
 uint8_t last_device_states = 0x00;
 uint8_t current_device_states = 0x00;
+uint8_t PT_data = 0x00;
 bool BR_flag = false;
 bool BL_flag = false;
 bool blink_toggle_state = true;
@@ -103,9 +105,10 @@ void loop() {
       Serial.print ("RTR ");
     }
 
+    uint32_t received_ID= CAN.packetId();
     Serial.print ("packet with id 0x");
-    Serial.print (CAN.packetId(), HEX);
-
+    Serial.print (received_ID, HEX);
+    
     if (CAN.packetRtr()) {
       Serial.print (" and requested length ");
       Serial.println (CAN.packetDlc());
@@ -115,8 +118,15 @@ void loop() {
 
       // only print packet data for non-RTR packets
       while (CAN.available()) {
-        current_device_states = (uint8_t) CAN.read();
-        Serial.printf("0x%02X", current_device_states);
+        if(received_ID != PT_CAN_ID){
+          current_device_states = (uint8_t) CAN.read();
+          Serial.printf("0x%02X", current_device_states);
+        } else {
+          PT_data = (uint8_t) CAN.read();
+          Serial.printf("0x%02X", PT_data);
+          Serial.println();
+        }
+
       }
       Serial.println();
     }
