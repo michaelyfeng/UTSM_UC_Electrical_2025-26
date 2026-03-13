@@ -10,7 +10,7 @@
 #define BLINK_L       14
 #define BRAKE         26
 
-#define NUM_BRAKE_LEDS 6
+#define NUM_BRAKE_LEDS 60
 
 #define BR_CAN_MASK           0x01
 #define BL_CAN_MASK           0x02
@@ -162,7 +162,7 @@ void loop() {
       brake_leds.show();
     } else {
       //digitalWrite(BRAKE, LOW);
-      brake_leds.setBrightness(30);
+      brake_leds.setBrightness(20);
       brake_leds.show();
     }
   }
