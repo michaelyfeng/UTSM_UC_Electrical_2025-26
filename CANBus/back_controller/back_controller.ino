@@ -10,7 +10,7 @@
 #define BLINK_L       14
 #define BRAKE         26
 
-#define NUM_BRAKE_LEDS 60
+#define NUM_BRAKE_LEDS 78
 
 #define BR_CAN_MASK           0x01
 #define BL_CAN_MASK           0x02
