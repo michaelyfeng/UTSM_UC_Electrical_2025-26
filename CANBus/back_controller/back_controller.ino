@@ -1,10 +1,11 @@
 #include <CAN.h>
 #include <Adafruit_NeoPixel.h>
 
-#define TX_GPIO_NUM   32
-#define RX_GPIO_NUM   33
-#define CAN_ID        0x08
-#define PT_CAN_ID     0x99
+#define TX_GPIO_NUM       32
+#define RX_GPIO_NUM       33
+#define CAN_ID            0x08
+#define PT_CAN_ID         0x3F
+#define STEERING_CAN_ID   0x10
 
 #define BLINK_R       21
 #define BLINK_L       14
@@ -118,10 +119,10 @@ void loop() {
 
       // only print packet data for non-RTR packets
       while (CAN.available()) {
-        if(received_ID != PT_CAN_ID){
+        if(received_ID == STEERING_CAN_ID){
           current_device_states = (uint8_t) CAN.read();
           Serial.printf("0x%02X", current_device_states);
-        } else {
+        } else if (received_ID == PT_CAN_ID){
           PT_data = (uint8_t) CAN.read();
           Serial.printf("0x%02X", PT_data);
           Serial.println();

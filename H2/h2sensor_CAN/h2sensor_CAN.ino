@@ -1,6 +1,7 @@
 // TB200B-ES1/ES4 Hydrogen Gas Sensor Module
 // ESP32 (has 3 UARTs): UART2 used for H2 sensor, UART0 (USB) for debug output
 
+#include <CAN.h>
 
 // ----------PIN DEFINITIONS----------
 #define SENSOR_RX     16   // GPIO16 = RX2 (data coming in from sensor)
@@ -11,6 +12,9 @@
 #define RESET_BUTTON  22   // pressed by user to attempt reset
 #define RESET_LED     21   // ON while system checks H2 levels during reset
 
+#define TX_GPIO_NUM   32
+#define RX_GPIO_NUM   33
+#define CAN_ID        0x06
 
 // ----------SENSOR DATA-------------
 byte readIncoming[13];                                                    // 13-byte buffer stores data from sensor
@@ -25,7 +29,7 @@ unsigned long last_read_time = 0;
 const long interval = 500;
 
 // --------THRESHOLD CONDITIONS------
-float threshold         = 10000;  // H2 alert threshold in ppm (10000 ppm = 1% vol)
+float h2_threshold         = 150;  // H2 alert threshold in ppm (10000 ppm = 1% vol)
 float temp_threshold    = 15.0;     // temperature threshold in deg C (unused for now?)
 
 //----------DEFINE STATES------------
@@ -40,10 +44,21 @@ State current_state = STATE_SAFE;
 
 // --------------------------------------------------------------------------------------------------------------------------
 
+void send_on_CAN(void);
+
 void setup() {
   Serial.begin(115200); // UART0: debug output to PC over USB
   Serial2.begin(9600, SERIAL_8N1, SENSOR_RX, SENSOR_TX); // UART2: H2 sensor communication must be at 9600 baud
   Serial2.setTimeout(200); // times out in 200ms if sensor stops responding
+
+  // Set the pins
+  CAN.setPins (RX_GPIO_NUM, TX_GPIO_NUM);
+
+  // start the CAN bus at 500 kbps -- halved? 250kbps
+  if (!CAN.begin(500E3)) {
+    Serial.println("Starting CAN failed!");
+    while (1);
+  }
 
   // Warm up the sensor 90s for stable readings (datasheet T90)
   Serial.println("Sensor warming up...");
@@ -127,12 +142,13 @@ void loop() {
   if(last_read_time + interval < current_time){
     last_read_time = current_time;
     read_sensor();
+    //send_on_CAN();
   }
 
   switch(current_state) {
 
     case STATE_SAFE:
-      if (temperature >= temp_threshold) { // concentration over safety threshold -> UNSAFE!!
+      if (concentration_ppm >= h2_threshold) { // concentration over safety threshold -> UNSAFE!!
         Serial.println("   ALERT: Concentration above threshold");
         current_state = STATE_ALERT;        // change state to alert
 
@@ -161,7 +177,7 @@ void loop() {
       break;
     
     case STATE_RESETTING: 
-      if (temperature < temp_threshold) { // concentration back under threshold -> safe
+      if (concentration_ppm < h2_threshold) { // concentration back under threshold -> safe
         Serial.println("   Concentration safe — returning to normal");
         current_state = STATE_SAFE;        // change state back to normal
 
@@ -178,3 +194,21 @@ void loop() {
       break;
   }
   }
+
+void send_on_CAN(void){
+    Serial.printf("Sending packet 0x%02X 0x%02X 0x%02X 0x%02X 0x%02X 0x%02X ... ", 
+      readIncoming[6], readIncoming[7], 
+      readIncoming[8], readIncoming[9], 
+      readIncoming[10], readIncoming[11]);
+    
+    CAN.beginPacket(CAN_ID);
+    CAN.write(readIncoming[6]);
+    CAN.write(readIncoming[7]);
+    CAN.write(readIncoming[8]);
+    CAN.write(readIncoming[9]);
+    CAN.write(readIncoming[10]);
+    CAN.write(readIncoming[11]);
+    CAN.endPacket();
+
+    Serial.println("done");
+}
