@@ -220,6 +220,7 @@ void loop() {
       }
       speed_num((int) RPM);
       h2_num(H2_data_buf[0], H2_data_buf[1]);
+      temp_num(H2_data_buf[2], H2_data_buf[3]);
     }
     Serial.println();
   }
@@ -242,8 +243,12 @@ unsigned long metrics() {
   tft.println("Speed: ");
 
   tft.setCursor(140, 160+30);
-  tft.setTextColor(TFT_WHITE);  tft.setTextSize(3);
+  tft.setTextColor(TFT_WHITE);  tft.setTextSize(2);
   tft.println("H2 (ppm): ");
+
+  tft.setCursor(140, 160+30+30);
+  tft.setTextColor(TFT_WHITE);  tft.setTextSize(2);
+  tft.println("Temp C: ");
 
   return micros() - start;
 }
@@ -260,10 +265,19 @@ unsigned long speed_num(int sp) {
 }
 
 void h2_num(uint8_t high, uint8_t low) {
-  tft.fillRect(250, 160+30, 60, 20, TFT_RED);
+  tft.fillRect(250+20, 160+30, 60, 20, TFT_RED);
   char buf[10];
-  sprintf(buf, "%f", ((high * 256) + low) * 10.0);
-  tft.setCursor(255, 165+30);
+  sprintf(buf, "%.2f", ((high * 256) + low) * 10.0);
+  tft.setCursor(255+20, 165+30);
+  tft.setTextColor(TFT_WHITE);  tft.setTextSize(2);
+  tft.println(buf);
+}
+
+void temp_num(uint8_t high, uint8_t low){
+  tft.fillRect(250, 160+30+30, 62, 22, TFT_RED);
+  char buf[10];
+  sprintf(buf, "%.2f", (((high << 8) | low)) / 100.0);
+  tft.setCursor(255, 165+30+30);
   tft.setTextColor(TFT_WHITE);  tft.setTextSize(2);
   tft.println(buf);
 }

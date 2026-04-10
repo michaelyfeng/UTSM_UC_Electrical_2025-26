@@ -142,7 +142,7 @@ void loop() {
   if(last_read_time + interval < current_time){
     last_read_time = current_time;
     read_sensor();
-    //send_on_CAN();
+    send_on_CAN();
   }
 
   switch(current_state) {
